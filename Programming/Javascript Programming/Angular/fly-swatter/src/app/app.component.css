@@ -1,0 +1,12 @@
+screen-size-message{
+    display: none;
+}
+
+@media only screen and (max-width: 1250px){
+    screen-size-message{
+        display: block;
+    }
+    swatter{
+        display: none;
+    }
+}

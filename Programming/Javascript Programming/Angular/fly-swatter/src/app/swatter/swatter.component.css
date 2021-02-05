@@ -1,0 +1,62 @@
+#gameBackground{
+    cursor: none;
+    background-color: lightgray;
+}
+
+img{
+    position: absolute;
+}
+
+#watinga{
+    position: relative;
+    left: 40%;
+    top: 100%;
+}
+
+#watingaSwatter{
+    left: 0%;
+    top: 250px;
+    height: 300px;
+    width: 255px;
+}
+
+#yellowSplash{
+    left: -20%;
+    top: -60%;
+    height: 2000px;
+    width: 2000px;
+}
+
+.gameTextBox{
+    position: relative;
+    font-family: 'arcade-game', 'arial', sans-serif;
+    font-size: 40px;
+}
+
+.gameTextBox > p{
+    display: flex;
+    justify-content: center;
+}
+
+#optionsMenu{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button, label, select{
+    font-family: 'arcade-game', 'arial', sans-serif;
+}
+
+/* disable highlighting of elements, which if accidentally done over
+   flies ruins the gameplay experience. -moz-selection is Firefox specific*/
+::-moz-selection {
+    background-color: transparent;
+    color: #000;
+}
+
+::selection {
+    background-color: transparent;
+    color: #000;
+}

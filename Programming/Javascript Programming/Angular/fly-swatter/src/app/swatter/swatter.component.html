@@ -1,0 +1,64 @@
+<div id="optionsMenu">
+    <button (click)="playMusic()">Play music</button>
+    <button (click)="stopMusic()">Stop music</button>
+    <button [disabled]="disableTimeAttackBtn" (click)="startGame()">Start</button>
+    <button [disabled]="disableTimeAttackBtn" (click)="restartGame()">Restart</button>
+    <div><label for="bugType">Bug Type </label>
+        <select [disabled]="disableTimeAttackBtn" [(ngModel)]="bugType" name="bugType" id="bugType">
+            <option *ngFor="let bug of bugTypes" value="{{ bug.value }}">{{ bug.name }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="numOfFliesPerWave">Flies per wave </label>
+        <select [disabled]="disableTimeAttackBtn" [(ngModel)]="maxFlies" name="numOfFliesPerWave"
+            id="numOfFliesPerWave">
+            <option *ngFor="let flies of fliesPerWave" value="{{ flies }}">{{ flies }}</option>
+        </select>
+    </div>
+    <div><label for="size">Size of flies </label>
+        <select [disabled]="disableTimeAttackBtn" [(ngModel)]="flySize" name="size" id="flySize">
+            <option *ngFor="let size of sizes" value="{{ size.value }}">{{ size.name }}</option>
+        </select>
+    </div>
+    <button [disabled]="disableTimeAttackBtn" (click)="timeAttack()">Time Attack</button>
+    <div>
+        <label for="difficulty">Time Attack Difficulty</label>
+        <select [(ngModel)]="difficultySetting" name="difficulty">
+            <option *ngFor="let difficulty of difficulties" value="{{ difficulty }}">{{ difficulty }}</option>
+        </select>
+    </div>
+    <button *ngIf="displayGiveUpBtn" (click)="playerGaveUp()">I give up</button>
+</div>
+<div (mouseover)="showSwatCursor()" (mouseout)="noShow()" id="gameBackground" style="height:700px; width:1500px;">
+    <div class="gameTextBox">
+        <p>Flies: {{ swappedFlies }}</p>
+        <p *ngIf="timeAttackIntro">Swat &nbsp;&nbsp; {{ timeAttackFlyNum }} &nbsp;&nbsp; flies &nbsp;&nbsp; before
+            &nbsp;&nbsp; the
+            &nbsp;&nbsp; time
+            &nbsp;&nbsp; runs &nbsp;&nbsp; out</p>
+        <p *ngIf="timeAttackIntro">{{ time }}</p>
+    </div>
+    <img *ngFor="let blueFly of blueFlies" id="blueFly{{blueFly.id}}" [src]="blueFlyIcon"
+        height="{{blueFly.height() * flySize}}" width="{{blueFly.width() * flySize}}" alt="{{blueFly.alt}}"
+        style.left="{{blueFly.xPos}}px" style.top="{{blueFly.yPos}}px">
+    <img *ngFor="let smallFly of smallFlies" id="smallFly{{smallFly.id}}" [src]="smallFlyIcon"
+        height="{{smallFly.height() * flySize}}" width="{{smallFly.width() * flySize}}" alt="{{smallFly.alt}}"
+        style.left="{{smallFly.xPos}}px" style.top="{{smallFly.yPos}}px">
+    <img *ngFor="let redEye of redEyeSmallFlies" id="redEyeSmall{{redEye.id}}" [src]="redEyeSmallIcon"
+        height="{{redEye.height() * flySize}}" width="redEye.width() * flySize" alt="redEye.alt"
+        style.left="{{redEye.xPos}}px" style.top="{{redEye.yPos}}px">
+    <img *ngFor="let wasp of wasps" id="wasp{{wasp.id}}" [src]="waspIcon" height="{{wasp.height() * flySize}}"
+        width="wasp.width() * flySize" alt="wasp.alt" style.left="{{wasp.xPos}}px" style.top="{{wasp.yPos}}px">
+    <img *ngFor="let bomb of bombs" id="bomb{{bomb.id}}" [src]="bombIcon" height="{{bomb.height() * flySize}}"
+        width="bomb.width() * flySize" alt="bomb.alt" style.left="{{bomb.xPos}}px" style.top="{{bomb.yPos}}px">
+    <img *ngFor="let swarm of swarms" id="swarm{{swarm.id}}" [src]="swarmIcon" height="{{swarm.height() * flySize}}"
+        width="swarm.width() * flySize" alt="swarm.alt" style.left="{{swarm.xPos}}px" style.top="{{swarm.yPos}}px">
+    <div id="watinga">
+        <img [src]="bossImage" alt="watinga.png">
+        <img id="watingaSwatter" src="assets/flySwatter/flySwatter.png" alt="watingaSwatter">
+    </div>
+    <img id="yellowSplash" src="assets/flySwatter/yellowSplash.png" alt="yellowSplash"
+        style.display="{{ yellowSplashDisplay }}" style.opacity="{{ splashOpacity }}">
+    <img id="swatCursor" (click)="splat()" [style.display]="imageDisplay" [src]="swatterPng" height="64px" width="32px"
+        alt="swatterImg" [style.left]="left" [style.top]="top">
+</div>
