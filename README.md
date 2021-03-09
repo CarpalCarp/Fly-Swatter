@@ -5,3 +5,5 @@ Fly Swatter is a game I made for fun as I've been practicing using Angular, even
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
 Link: https://carpalcarp.github.io/fly-swatter/
+
+![GitHub Logo](/src/assets/img/FlySwatter.PNG)
